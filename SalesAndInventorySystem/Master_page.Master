@@ -41,7 +41,6 @@
             </div>
 
             <div class="content">Sample</div>
-            <div class="content">Sample</div>
 
             <%-- PAGES --%>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

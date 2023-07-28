@@ -19,10 +19,15 @@ $(window).scroll(e => {
 
     $('.nav_con').attr('data-position', current_pos)
 
+
+    console.log('current_pos:', current_pos)
+    console.log('prev_pos:', prev_pos)
+
     if (current_pos > 150 && current_pos > prev_pos) {
         nav.addClass('nav_hide')
     } else {
         nav.removeClass('nav_hide')
     }
+
 
 })
