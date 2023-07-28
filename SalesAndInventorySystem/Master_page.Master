@@ -1,0 +1,74 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master_page.master.cs" Inherits="SalesAndInventorySystem.Master_page" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Sales and Inventory System</title>
+
+    <link href="/Links/CSS/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Links/CSS/font-awesome_6.3.0_css_all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+
+    <link href="/Links/CSS/dataTables.dateTime.min.css" rel="stylesheet" />
+    <link href="/Links/CSS/Master_page.css" rel="stylesheet" />
+
+    <%--CUSTOM CSS / CSS PER PAGE--%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+
+
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="master_div">
+
+            <div class="nav_con" data-position="0">
+                <div class="nav">
+                    <div class="logo_con">logo</div>
+                    <div class="search_con">
+                        <input class="global_search" type="text" name="global_search" value="" placeholder="Search"/>
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <div class="logo_con">
+                        <i class="fa fa-user"></i>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="content"></div>
+            <div class="content"></div>
+
+            <%-- PAGES --%>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+
+
+        </div>
+    </form>
+
+
+</body>
+</html>
+
+<%--GENERAL SCRIPTS--%>
+<script src="/Links/JS/jquery-3.7.0.min.js"></script>
+<script src="/Links/JS/bootstrap.bundle.min.js"></script>
+<script src="/Links/JS/bootstrap.min.js"></script>
+<script src="/Links/JS/jquery.dataTables.min2.js"></script>
+<script src="/Links/JS/jquery-ui.js"></script>
+<script src="/Links/JS/sweetalert2.js"></script>
+
+
+<script src="/Links/JS/Master_page.js"></script>
+
+
+
+<%--CUSTOM SCRIPTS / SCRIPTS PER PAGE--%>
+<asp:ContentPlaceHolder ID="scripts" runat="server">
+</asp:ContentPlaceHolder>
