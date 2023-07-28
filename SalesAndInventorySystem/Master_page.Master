@@ -40,13 +40,27 @@
                 </div>
             </div>
 
-            <div class="content"></div>
-            <div class="content"></div>
+            <div class="content">Sample</div>
+            <div class="content">Sample</div>
 
             <%-- PAGES --%>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
 
+
+            <%-- MODAL LOGION --%>
+            <div class="modal_login ">
+                
+                <div class="login ">
+                    <p>Login</p>
+                    <input placeholder="Username" class="subscribe-input" name="email" type="email">
+                    <br>
+                    <input placeholder="Password" class="subscribe-input" name="pass" type="password">
+                    <br>
+                    <div class="submit-btn">SUBMIT</div>
+                </div>
+
+            </div>
 
 
         </div>

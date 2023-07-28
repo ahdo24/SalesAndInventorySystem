@@ -1,6 +1,15 @@
 ﻿$(() => {
 
+    $('.logo_con').click(() => {
+        $('.modal_login').addClass('show_modal_login')
+        $('.login').addClass('show_login')
+    })
 
+    $('.modal_login:not(> .login)').click(() => {
+        $('.modal_login').removeClass('show_modal_login')
+        $('.login').removeClass('show_login')
+
+    })
 })
 
 $(window).scroll(e => {
