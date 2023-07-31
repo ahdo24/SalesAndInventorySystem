@@ -16,153 +16,21 @@
                     <th>Desc</th>
                     <th>Price</th>
                     <th>Qty</th>
+                    <th>Barcode</th>
                 </tr>
             </thead>
             <tbody>
+
                  <tr>
                     <td>
-                        <img src="../Images/DeWalt 20V.jfif" width="150" loading="lazy"  />
+                        <img src="../Images/DeWalt 20V.jfif" loading="lazy"/>
                     </td>
                     <td>Drill</td>
                     <td>100</td>
                     <td>5</td>
+                    <td>serial 1</td>
                 </tr>
-                <tr>
-                    <td>
-                        <img src="../Images/Screw.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Screww</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="../Images/MilwaukeeM12.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Screww</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="../Images/Claw-hammer.jpg" width="150" loading="lazy"  />
-                    </td>
-                    <td>Hammer</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                 <tr>
-                    <td>
-                        <img src="../Images/DeWalt 20V.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Drill</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="../Images/Screw.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Screww</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="../Images/MilwaukeeM12.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Screww</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                 <tr>
-                    <td>
-                        <img src="../Images/DeWalt 20V.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Drill</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="../Images/Screw.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Screww</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="../Images/MilwaukeeM12.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Screww</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="../Images/Claw-hammer.jpg" width="150" loading="lazy"  />
-                    </td>
-                    <td>Hammer</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                 <tr>
-                    <td>
-                        <img src="../Images/DeWalt 20V.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Drill</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="../Images/Screw.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Screww</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="../Images/MilwaukeeM12.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Screww</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="../Images/Claw-hammer.jpg" width="150" loading="lazy"  />
-                    </td>
-                    <td>Hammer</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                 <tr>
-                    <td>
-                        <img src="../Images/DeWalt 20V.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Drill</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="../Images/Screw.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Screww</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="../Images/MilwaukeeM12.jfif" width="150" loading="lazy"  />
-                    </td>
-                    <td>Screww</td>
-                    <td>100</td>
-                    <td>5</td>
-                </tr>
+               
             </tbody>
         </table>
     </div>
@@ -174,7 +42,6 @@
 
 <%-- JS --%>
 <asp:Content ID="Content3" ContentPlaceHolderID="scripts" runat="server">
+    <script src="../Links/JS/Home.js"></script>
     
-        <script src="../Links/JS/Home.js"></script>
-
 </asp:Content>

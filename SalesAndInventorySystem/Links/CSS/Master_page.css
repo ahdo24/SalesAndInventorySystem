@@ -2,7 +2,7 @@
     --fff: #fff;
     --bbb: #000;
     --white: #FFF2F9;
-    --black: #323232;
+    --black: #707070;
     --dim: #1c1c1ccf;
     --pink: #FA4EAB;
     --pink-lg: #FE83C6;
@@ -12,7 +12,7 @@
     margin: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-    transition: 100ms ease-out;
+    transition: 250ms ease-out;
 }
 body {
     overflow-x: hidden;
@@ -51,7 +51,7 @@ body {
     padding: 0 2%;
     background: #fff;
     color: var(--pink-lg);
-    border: 1px solid #aaa;
+    border: 1px solid var(--black);
     transition: transform 100ms ease-in-out;
     transform: translateY(0);
 }
@@ -62,16 +62,18 @@ body {
     all: unset;
     padding: 0 5px;
     min-width: 320px;
-    border-radius: 5px;
     text-align: center;
     font-weight: bold;
     letter-spacing: 2px;
     color: var(--pink);
     text-transform: capitalize;
+    background: transparent;
+    border-radius: 3px;
 }
 .nav:has(.global_search:focus) {
     color: var(--pink);
-    border: 1px solid var(--black);
+    border: 1px solid var(--pink);
+
 }
 
 .user_con {

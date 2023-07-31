@@ -29,9 +29,18 @@ $(() => {
 
     $('.login').click(e => e.stopPropagation())
 
-
-
-
-
 })
 
+
+
+const getData = (obj) => {
+    let data = obj.data ?? ''
+
+    return $.ajax({
+        url: obj.url,
+        type: 'POST',
+        contentType: 'application/json;charset=utf-8',
+        data: data,
+        fail: (e, msg) => { console.log(msg) },
+    })
+}

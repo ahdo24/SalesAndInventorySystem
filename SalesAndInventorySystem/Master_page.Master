@@ -7,11 +7,9 @@
     <title>Sales and Inventory System</title>
 
     <link href="/Links/CSS/bootstrap.min.css" rel="stylesheet" />
-    <link href="/Links/CSS/font-awesome_6.3.0_css_all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
    
     <link href="/Links/CSS/dataTables.min.css" rel="stylesheet" />
-    <link href="/Links/CSS/dataTables.dateTime.min.css" rel="stylesheet" />
     <link href="/Links/CSS/Master_page.css" rel="stylesheet" />
 
     <%--CUSTOM CSS / CSS PER PAGE--%>
