@@ -1,5 +1,8 @@
 ﻿$(() => {
 
-    $('.sales_and_inventory').DataTable();
+    $('.sales_and_inventory').DataTable({
+
+    });
+
 })
 

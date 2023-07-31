@@ -2,3 +2,27 @@
     background: var(--fff);   
     min-height: 85vh;
 }
+
+.sales_con :is(.dataTables_length, .dataTables_filter) {
+    display: none;
+}
+.sales_con tbody {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.sales_con tbody tr {
+    float: left;
+    margin: 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+/*    box-shadow: 3px 3px 6px #aaa;
+    background-color: white;*/
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    text-align: center;
+}
+
+
+

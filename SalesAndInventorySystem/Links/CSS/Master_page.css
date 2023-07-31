@@ -89,7 +89,7 @@ body {
     width: 100%;
     min-height: 100vh;
     background: var(--white);
-    padding: 10vh 3vw 2vw 3vw;
+    padding: 10vh 3vw 0vw 3vw;
 }
 
 
@@ -112,7 +112,7 @@ body {
 
 .show_modal_login {
     opacity: 1;
-    z-index: 1;
+    z-index: 3;
     visibility: visible;
     transition: 300ms ease-in-out;
 }
