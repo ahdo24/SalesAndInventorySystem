@@ -35,6 +35,14 @@
                     <td>100</td>
                     <td>5</td>
                 </tr>
+                <tr>
+                    <td>
+                        <img src="../Images/Screw.jfif" width="200" loading="lazy"  />
+                    </td>
+                    <td>Screww</td>
+                    <td>100</td>
+                    <td>5</td>
+                </tr>
             </tbody>
         </table>
     </div>
