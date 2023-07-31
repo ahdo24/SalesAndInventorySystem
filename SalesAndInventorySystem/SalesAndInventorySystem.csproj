@@ -67,12 +67,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\83163306-40.jpg" />
+    <Content Include="Images\Claw-hammer.jpg" />
+    <Content Include="Images\DeWalt 20V.jfif" />
+    <Content Include="Images\hammer2.jpg" />
+    <Content Include="Images\MilwaukeeM12.jfif" />
+    <Content Include="Images\Screw.jfif" />
     <Content Include="Links\CSS\bootstrap.min.css" />
     <Content Include="Links\CSS\dataTables.dateTime.min.css" />
+    <Content Include="Links\CSS\dataTables.min.css" />
     <Content Include="Links\CSS\font-awesome_6.3.0_css_all.min.css" />
+    <Content Include="Links\CSS\Home.css" />
     <Content Include="Links\CSS\Master_page.css" />
     <Content Include="Links\JS\bootstrap.bundle.min.js" />
     <Content Include="Links\JS\bootstrap.min.js" />
+    <Content Include="Links\JS\Home.js" />
     <Content Include="Links\JS\jquery-3.6.3.js" />
     <Content Include="Links\JS\jquery-3.7.0.min.js" />
     <Content Include="Links\JS\jquery-ui.js" />
@@ -111,7 +120,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
