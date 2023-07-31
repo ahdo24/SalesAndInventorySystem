@@ -33,18 +33,20 @@
                         <input class="global_search" type="text" name="global_search" value="" placeholder="Search"/>
                         <i class="fa fa-search"></i>
                     </div>
-                    <div class="logo_con">
+                    <div class="user_con">
                         <i class="fa fa-user"></i>
-
                     </div>
                 </div>
             </div>
 
-            <div class="content">Sample</div>
 
-            <%-- PAGES --%>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+            <%-- CONTENT --%>
+            <div class="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+
 
 
             <%-- MODAL LOGION --%>

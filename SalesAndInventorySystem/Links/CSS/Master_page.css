@@ -24,7 +24,6 @@ body {
     min-width: 100vw;
     position: relative;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: -10vh;
 }
 #master_div:has(.show_modal_login) {
     overflow: hidden;
@@ -74,12 +73,12 @@ body {
     border: 1px solid var(--black);
 }
 
-.logo_con {
+.user_con {
     padding: 0px 5px;
     border-radius: 3px;
     cursor: pointer;
 }
-.logo_con:hover {
+.user_con:hover {
     background: var(--pink);
     color: var(--white);
 }
@@ -87,7 +86,7 @@ body {
 /* Content */
 .content {
     width: 100%;
-    height: 400%;
+    min-height: 100vh;
     background: var(--white);
 }
 
@@ -121,7 +120,7 @@ body {
     position: relative;
     height: 30%;
     width: 20%;
-    padding: 20px;
+    padding: 25px;
     background-color: #FFF;
     border-radius: 4px;
     color: #333;
@@ -159,9 +158,10 @@ body {
     border: none;
     border-bottom: 1px solid #d4d4d4;
     padding: 10px;
-    width: 82%;
+    width: 100%;
     background: transparent;
-    transition: all .25s ease;
+    transition: all .5s ease-in-out;
+    letter-spacing: 2px;
 }
 
 .login input:focus {
