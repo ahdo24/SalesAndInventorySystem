@@ -13,22 +13,16 @@
             <thead style="display:none">
                 <tr>
                     <th>Image</th>
-                    <th>Desc</th>
-                    <th>Price</th>
-                    <th>Qty</th>
-                    <th>Barcode</th>
+                    <th>Item Details</th>
                 </tr>
             </thead>
             <tbody>
 
-                 <tr>
+                 <tr class="add_btn">
                     <td>
-                        <img src="../Images/DeWalt 20V.jfif" loading="lazy"/>
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
                     </td>
-                    <td>Drill</td>
-                    <td>100</td>
-                    <td>5</td>
-                    <td>serial 1</td>
+                    <td></td>
                 </tr>
                
             </tbody>

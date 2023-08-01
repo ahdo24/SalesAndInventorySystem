@@ -31,13 +31,29 @@
     text-align: center;
     letter-spacing: 1px;
 }
+.sales_con .add_btn {
+    cursor: pointer;
+}
+.sales_con tbody tr.add_btn i {
+    font-size: 5rem;
+    color: var(--black);
+}
+.sales_con tbody tr.add_btn:hover i {
+    color: var(--pink);
+}
 .sales_con tbody tr:hover {
     border: 1px solid var(--pink);
 }
-.sales_con tbody tr:hover > td {
+.sales_con tbody tr:not(.add_btn) td {
+    color: var(--pink);
+    height: 100%;
+    transition: 100ms ease;
+    z-index: -1;
+}
+.sales_con tbody tr:not(.add_btn):hover > td {
     z-index: 1;
-    background: var(--pink);
-    color: var(--white);
+    backdrop-filter: blur(3px);
+    text-shadow: 0 0 1px black;
 }
 .sales_con tbody tr td:nth-of-type(1) {
     position: absolute;
@@ -60,6 +76,34 @@
     object-fit: contain;
     padding: 2%;
 }
+.item_details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: relative;
+    height: 100%;
+}
+.item_details .top {
+    width: 100%;
+}
+.item_details .bottom {
+    position: absolute;
+    bottom: 0;
+}
+.item_details .bottom.item_qty {
+    right: 0;
+}
+.item_modal {
+    transform: translateY(250%);
+    height: 70%;
+    width: 30%;
+    padding: 25px;
+    background-color: #FFF;
+    border-radius: 4px;
+    color: #333;
+    box-shadow: 0px 0px 60px 5px rgba(0, 0, 0, 0.4);
+}
+
 
 
 

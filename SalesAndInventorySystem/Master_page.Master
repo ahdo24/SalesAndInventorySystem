@@ -30,7 +30,7 @@
                     <div class="logo_con">logo</div>
                     <div class="search_con">
                         <input class="global_search" type="text" name="global_search" value="" placeholder="Search"/>
-                        <i class="fa fa-search"></i>
+                        <i class="search_btn fa fa-search" ></i>
                     </div>
                     <div class="user_con">
                         <i class="fa fa-user"></i>
@@ -48,10 +48,11 @@
 
 
 
-            <%-- MODAL LOGION --%>
-            <div class="modal_login ">
+            <%-- MODAL --%>
+            <div class="modal_login">
                 
-                <div class="login ">
+                <%--LOGIN--%>
+                <div class="login modal_child">
                     <p>Login</p>
                     <input placeholder="Username" class="subscribe-input" name="email" type="email">
                     <br>
@@ -59,6 +60,12 @@
                     <br>
                     <div class="submit-btn">SUBMIT</div>
                 </div>
+
+                <%-- ITEM MODAL --%>
+                <div class="item_modal modal_child">
+                    modal item
+                </div>
+
 
             </div>
 

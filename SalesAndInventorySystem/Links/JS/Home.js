@@ -4,12 +4,13 @@
 
 
     $('.global_search').keyup((e) => {
-        let val = $(e.target).val();
-
-        $('.sales_and_inventory').DataTable().search(val).draw()
+        $('.sales_and_inventory').DataTable().search($(e.target).val()).draw()
     })
 
-
+    $('.add_btn').click(() => {
+        $('.modal_login').addClass('show_modal_login')
+        $('.item_modal').addClass('show_modal_child')
+    })
 
 })
 
@@ -21,26 +22,29 @@ const populateTable = () => {
         let data = JSON.parse(e.d);
         let tbody = $('.sales_and_inventory tbody');
 
-
         if (data.length > 0) {
             let html = '';
-
-            tbody.html('');
 
             data.map(item => {
                 html +=
                     `
-                    <tr>
-                        <td> <img loading="lazy" src="../Images/${item.Image}"/> </td>
-                        <td> ${item.ItemDesc} </td>
-                        <td> ${item.Price} </td>
-                        <td> ${item.Qty} </td>
-                        <td> ${item.Barcode_Serial} </td>
+                    <tr data-id="${item.ID}">
+                        <td>
+                            <img loading="lazy" src="../Images/${item.Image}"/>
+                        </td>
+                        <td>
+                            <div class="item_details">
+                                 <div class="item_code top"> ${item.Barcode_Serial} </div>
+                                 <div class="item_desc top"> ${item.ItemDesc} </div>
+                                 <div class="item_price bottom"> P${item.Price} </div>
+                                 <div class="item_qty bottom"> ${item.Qty} Qty </div>
+                            </div>
+                        </td>
                     </tr>                        
                     `
             })
 
-            tbody.html(html);
+            tbody.append(html);
         }
 
         $('.sales_and_inventory').DataTable({

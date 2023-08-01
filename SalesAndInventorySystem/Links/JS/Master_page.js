@@ -19,16 +19,32 @@
 $(() => {
     $('.user_con').click(() => {
         $('.modal_login').addClass('show_modal_login')
-        $('.login').addClass('show_login')
+        $('.login').addClass('show_modal_child')
     })
 
     $('.modal_login').click(() => {
         $('.modal_login').removeClass('show_modal_login')
-        $('.login').removeClass('show_login')
+        $('.show_modal_child').removeClass('show_modal_child')
     })
 
     $('.login').click(e => e.stopPropagation())
 
+    $('.search_btn').click((e) => {
+        e.stopPropagation();
+        $('.global_search').addClass('global_search_width');
+        $('.global_search').focus();
+    })
+
+    $('body').click(e => {
+        if (
+            !$(e.target).hasClass('global_search_width') && $('.global_search').hasClass('global_search_width')
+        ) {
+            $('.global_search').removeClass('global_search_width')
+        }
+        if ($('.global_search').val() != "") {
+            $('.global_search').addClass('global_search_width')
+        }
+    })
 })
 
 
