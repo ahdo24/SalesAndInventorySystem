@@ -12,6 +12,9 @@
         $('.item_modal').addClass('show_modal_child')
     })
 
+    $('.item_modal').mousedown(e => e.stopPropagation())
+
+
 })
 
 

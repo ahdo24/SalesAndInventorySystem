@@ -11,8 +11,13 @@
         nav.removeClass('nav_hide')
     }
 
-    if ($('.global_search:focus').length > 0) {
-        nav.removeClass('nav_hide')
+    if (
+        $('.global_search:focus').length > 0
+        || 
+        $('.global_search').val() != ""
+        ) {
+        nav.removeClass('nav_hide');
+        nav.mouseover();
     }
 })
 
@@ -22,12 +27,12 @@ $(() => {
         $('.login').addClass('show_modal_child')
     })
 
-    $('.modal_login').click(() => {
+    $('.modal_login').mousedown(() => {
         $('.modal_login').removeClass('show_modal_login')
         $('.show_modal_child').removeClass('show_modal_child')
     })
 
-    $('.login').click(e => e.stopPropagation())
+    $('.login').mousedown(e => e.stopPropagation())
 
     $('.search_btn').click((e) => {
         e.stopPropagation();
