@@ -6,6 +6,8 @@
     --dim: #1c1c1ccf;
     --pink: #FA4EAB;
     --pink-lg: #FE83C6;
+    --cancel: red;
+    --cancel-lg: #ff4d4d;
 }
 
 * {
@@ -14,6 +16,7 @@
     scroll-behavior: smooth;
     transition: 250ms ease-out;
 }
+
 body {
     overflow-x: hidden;
 }
@@ -109,7 +112,7 @@ body {
 
 
 
-/* Modal Login */
+/* Modal */
 .modal_login {
     position: fixed;
     top: 0;
@@ -220,7 +223,7 @@ body {
     height: 0;
     border-left: 0px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 10px solid var(--pink-lg);
+    border-bottom: 10px solid var(--cancel-lg);
     transform: rotateY(180deg);
 }
 .modal_child .cancel_btn {
@@ -228,7 +231,7 @@ body {
     border-radius: 30px;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-    background-color: var(--pink-lg);
+    background-color: var(--cancel-lg);
     color: #FFF;
     padding: 12px 25px;
     display: inline-block;
@@ -243,11 +246,15 @@ body {
     z-index: 3;
 }
 
-
 .modal_child .btn:hover {
-    background-color: var(--pink);
     box-shadow: -5px 6px 20px 0px rgba(88, 88, 88, 0.569);
     bottom: -15px;
+}
+.modal_child .cancel_btn:hover {
+    background-color: var(--cancel);
+}
+.modal_child .submit_btn:hover {
+    background-color: var(--pink);
 }
 
 /* ITEM MODAL */
@@ -255,16 +262,87 @@ body {
     transform: translateY(250%);
     height: 70%;
     width: 30%;
-    padding: 25px;
+    padding: 10px 25px;
     background-color: #FFF;
     border-radius: 4px;
     color: #333;
     box-shadow: 0px 0px 60px 5px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal_header {
+    font-size: 2rem;
+    text-align: center;
+}
+.modal_body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+    gap: 1rem;
+}
+.modal_login input[type="text"] {
+    all: unset;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding: 2px;
+    text-align: center;
+    transition: 300ms ease-in-out;
+}
+.modal_login input[type="text"]:focus-visible {
+    border: 1px solid var(--pink);
+    color: var(--pink);
+}
+.input_full {
+    width: 100% !important;
+}
+.input_half {
+    width: 47.5% !important;
 }
 
 
 
+/* ITEM MODAL */
+.preview_image_con {
+    width: 100%;
+    height: 60%;
+    border-radius: 3px;
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='1' stroke-dasharray='8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    cursor: pointer;
+    position: relative;
+}
+.preview_image,
+.upload_image_label {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    z-index: -1;
+    object-fit: contain;
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.show_image {
+    transition: none;
+    visibility: visible;
+}
 
+.input_con {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    flex-grow: 1;
+}
+.input_image {
+    display: none;
+}
 
 
 

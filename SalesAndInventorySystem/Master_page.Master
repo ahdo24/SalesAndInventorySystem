@@ -49,22 +49,37 @@
 
 
             <%-- MODAL --%>
-            <div class="modal_login">
+            <div class="modal_login show_modal_login">
                 
                 <%-- LOGIN --%>
                 <div class="login modal_child">
                     <p>Login</p>
-                    <input placeholder="Username" class="subscribe-input" name="email" type="email">
+                    <input placeholder="Username" name="email" type="email">
                     <br>
-                    <input placeholder="Password" class="subscribe-input" name="pass" type="password">
+                    <input placeholder="Password" name="pass" type="password">
                     <br>
                     <div class="submit_btn btn">SUBMIT</div>
                 </div>
 
                 <%-- ITEM MODAL --%>
-                <div class="item_modal modal_child">
+                <div class="item_modal modal_child show_modal_child">
                     <div class="modal_header">Insert Item</div>
-                    <div class="modal_body"></div>
+                    <div class="modal_body">
+                        <div class="preview_image_con">
+                            <img class="preview_image" src="#" />
+                            <span class="upload_image_label show_image">Upload Image <i class="fa fa-file" aria-hidden="true"></i> </span>
+                            <input id="input_image" class="input_image modal_input" type="file" name="upload_image" accept="image/*"/>
+                        </div>
+                        <div class="input_con">   
+
+                            <input class="input_code input_full modal_input" type="text" placeholder="Code" />
+                            <input class="input_desc input_full modal_input" type="text" placeholder="Description" />
+                            <input class="input_price input_half modal_input" type="text" placeholder="Price" />
+                            <input class="input_qty input_half modal_input" type="text" placeholder="Qty" />
+
+                        </div>
+
+                    </div>
 
                     <div class="submit_btn btn">INSERT</div>
                     <div class="cancel_btn btn">CANCEL</div>

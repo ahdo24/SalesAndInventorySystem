@@ -50,6 +50,42 @@ $(() => {
             $('.global_search').addClass('global_search_width')
         }
     })
+
+
+    $('.preview_image_con').click(() => {
+        $('.preview_image_con .input_image')[0].click();
+    })
+
+    $('.input_image').change(e => {
+        let prev_image = $('.preview_image')[0]
+        let file = e.target.files[0]
+
+        if (file) {
+            prev_image.src = URL.createObjectURL(file);
+
+            $('.preview_image').addClass('show_image')
+            $('.upload_image_label').removeClass('show_image')
+        }
+        else {
+            prev_image.src = '#'
+
+            $('.preview_image').removeClass('show_image')
+            $('.upload_image_label').addClass('show_image')
+
+        }
+
+    })
+
+    $('.cancel_btn').click(() => {
+        $('.modal_login').removeClass('show_modal_login')
+        $('.show_modal_child').removeClass('show_modal_child')
+
+        $('.modal_input').val('')
+        $('.input_image').change()
+    })
+
+
+
 })
 
 

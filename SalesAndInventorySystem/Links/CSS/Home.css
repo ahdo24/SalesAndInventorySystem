@@ -10,15 +10,16 @@
 }
 .sales_con tbody {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
 }
 .sales_con table.dataTable.no-footer {
     border-bottom: none;
 }
 .sales_con tbody tr {
     float: left;
-    margin: 15px 0px 0px 0px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;

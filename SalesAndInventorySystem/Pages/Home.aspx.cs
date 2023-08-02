@@ -7,6 +7,16 @@ using System.Web.Services;
 
 namespace SalesAndInventorySystem.Pages
 {
+    public class ItemDetails
+    {
+        public string item_id { set; get; }
+        public string item_code { set; get; }
+        public string item_desc { set; get; }
+        public string item_price { set; get; }
+        public string item_qty { set; get; }
+    }
+
+
     public partial class Home : System.Web.UI.Page
     {
         private static string connDB = ConfigurationManager.AppSettings["dbConn"];

@@ -15,6 +15,7 @@
     $('.item_modal').mousedown(e => e.stopPropagation())
 
 
+
 })
 
 
