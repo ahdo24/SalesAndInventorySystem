@@ -51,7 +51,6 @@ $(() => {
         }
     })
 
-
     $('.preview_image_con').click(() => {
         $('.preview_image_con .input_image')[0].click();
     })
@@ -79,25 +78,103 @@ $(() => {
     $('.cancel_btn').click(() => {
         $('.modal_login').removeClass('show_modal_login')
         $('.show_modal_child').removeClass('show_modal_child')
+        $('.modal_input').removeClass('invalid_input')
+        $('.preview_image_con').removeClass('invalid_input')
 
         $('.modal_input').val('')
         $('.input_image').change()
     })
 
+    $('.req').change(e => {
+        $(e.target).removeClass('invalid_input')
 
-
+        if (e.target.classList[0] == $("#input_image")[0].classList[0]) {
+            $('.preview_image_con').removeClass('invalid_input')
+        }
+    })
 })
 
 
 
-const getData = (obj) => {
-    let data = obj.data ?? ''
+const getData = obj => {
+    obj.data ??= ''
 
     return $.ajax({
         url: obj.url,
         type: 'POST',
         contentType: 'application/json;charset=utf-8',
-        data: data,
+        data: obj.data,
         fail: (e, msg) => { console.log(msg) },
     })
 }
+
+const requiredInput = inputs => {
+    
+    let input = inputs.map((i, field) => {
+        if (field.value == '') {
+            $(field).addClass('invalid_input')
+
+            if (field.classList[0] == $("#input_image")[0].classList[0]) {
+                $('.preview_image_con').addClass('invalid_input')
+            }
+
+            return field
+        }
+    })
+
+    return input
+}
+
+const sweetAlert = config => {
+    config.time ??= 2000;
+
+    var Toast = Swal.mixin({
+        toast: true,
+        position: 'top',
+        showConfirmButton: false,
+        timer: config.time
+    });
+    Toast.fire({
+        icon: config.icon,
+        title: config.title
+    })
+}
+
+const randChar = length => {
+    let result = '';
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let ctr = 0;
+    let range = length => 20 ? 20 : length
+        range = length <= 11 ? 11 : length
+
+    while (ctr < range) {
+        result += characters.charAt(Math.floor(Math.random() * characters.length));
+        ctr++;
+    }
+
+    var d = new Date();
+    var time_date = d.getSeconds().toString() +
+        d.getMinutes().toString() +
+        d.getHours().toString() +
+        d.getDate().toString() +
+        d.getMonth().toString() +
+        d.getFullYear().toString();
+
+    return time_date + result;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.IO;
+using System.Linq;
+using System.Web;
+using static SalesAndInventorySystem.Master_page;
+
+namespace SalesAndInventorySystem.Classes
+{
+    /// <summary>
+    /// Summary description for UploadImage
+    /// </summary>
+    public class UploadImage : IHttpHandler
+    {
+
+        public void ProcessRequest(HttpContext context)
+        {
+            context.Response.ContentType = "text/plain";
+            Parameters param = new Parameters();
+            Database db = new Database();
+
+            try
+            {
+                string str_file = "";
+                string fileName = "";
+                string fileExtension = "";
+                string filePath = "";
+                var folder = HttpContext.Current.Request.Params["folder"];
+                var sp = HttpContext.Current.Request.Params["sp"];
+
+
+                // database record update logic here  ()
+                // Input Text
+                param.input_code = HttpContext.Current.Request.Params["input_code"];
+                param.input_desc = HttpContext.Current.Request.Params["input_desc"];
+                param.input_price = HttpContext.Current.Request.Params["input_price"];
+                param.input_qty = HttpContext.Current.Request.Params["input_qty"];
+                param.input_image = HttpContext.Current.Request.Params["fileName"]; 
+                param.sp = HttpContext.Current.Request.Params["sp"];
+
+
+                db.InsertData(param);
+
+                //context.Response.Write(str_file);
+
+                // Insert in image in directory
+                foreach (string s in context.Request.Files)
+                {
+                    HttpPostedFile file = context.Request.Files[s];
+                    fileName = HttpContext.Current.Request.Params["fileName"];
+                    filePath = HttpContext.Current.Server.MapPath(Path.Combine("~/" + folder + "/"));
+
+                    if (!Directory.Exists(filePath))
+                    {
+                        Directory.CreateDirectory(filePath);
+                    }
+                    if (!string.IsNullOrEmpty(fileName))
+                    {
+                        fileExtension = Path.GetExtension(fileName);
+                        str_file = fileName;
+                        file.SaveAs(filePath + str_file);
+                    }
+                }
+
+            }
+            catch (Exception ac)
+            {
+                throw ac;
+            }
+
+
+        }
+
+        public bool IsReusable
+        {
+            get
+            {
+                return false;
+            }
+        }
+
+      
+
+
+    }
+}

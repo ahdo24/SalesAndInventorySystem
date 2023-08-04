@@ -344,6 +344,11 @@ body {
     display: none;
 }
 
+.invalid_input {
+    border: 1px solid red !important;
+    box-shadow: 0 0 3px red !important;
+    background: transparent !important;
+}
 
 
 

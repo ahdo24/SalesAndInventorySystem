@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Services;
+using static SalesAndInventorySystem.Master_page;
 
 namespace SalesAndInventorySystem.Pages
 {
@@ -19,8 +20,6 @@ namespace SalesAndInventorySystem.Pages
 
     public partial class Home : System.Web.UI.Page
     {
-        private static string connDB = ConfigurationManager.AppSettings["dbConn"];
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,13 +31,15 @@ namespace SalesAndInventorySystem.Pages
         public static string GetData()
         {
             DataTable dt = new DataTable();
+            Database db = new Database();
+
             string sp = "GET_INVENTORY";
 
             string error_msg = "";
 
             try
             {
-                using (SqlConnection con = new SqlConnection(connDB))
+                using (SqlConnection con = new SqlConnection(db.connDB))
                 {
                     con.Open();
                     SqlCommand cmd = new SqlCommand(sp, con);

@@ -68,14 +68,14 @@
                         <div class="preview_image_con">
                             <img class="preview_image" src="#" />
                             <span class="upload_image_label show_image">Upload Image <i class="fa fa-file" aria-hidden="true"></i> </span>
-                            <input id="input_image" class="input_image modal_input" type="file" name="upload_image" accept="image/*"/>
+                            <input id="input_image" class="input_image req modal_input" type="file" name="upload_image" accept="image/*"/>
                         </div>
                         <div class="input_con">   
 
-                            <input class="input_code input_full modal_input" type="text" placeholder="Code" />
-                            <input class="input_desc input_full modal_input" type="text" placeholder="Description" />
-                            <input class="input_price input_half modal_input" type="text" placeholder="Price" />
-                            <input class="input_qty input_half modal_input" type="text" placeholder="Qty" />
+                            <input class="input_code req input_full modal_input" type="text" placeholder="Code" />
+                            <input class="input_desc req input_full modal_input" type="text" placeholder="Description" />
+                            <input class="input_price req input_half modal_input" type="text" placeholder="Price" />
+                            <input class="input_qty req input_half modal_input" type="text" placeholder="Qty" />
 
                         </div>
 

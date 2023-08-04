@@ -1,0 +1,313 @@
+USE [master]
+GO
+/****** Object:  Database [SalesAndInventory]    Script Date: 8/4/2023 3:42:03 PM ******/
+CREATE DATABASE [SalesAndInventory]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'SalesAndInventory', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\SalesAndInventory.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'SalesAndInventory_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\SalesAndInventory_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [SalesAndInventory] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [SalesAndInventory].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [SalesAndInventory] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [SalesAndInventory] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [SalesAndInventory] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [SalesAndInventory] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [SalesAndInventory] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [SalesAndInventory] SET  MULTI_USER 
+GO
+ALTER DATABASE [SalesAndInventory] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [SalesAndInventory] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [SalesAndInventory] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [SalesAndInventory] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [SalesAndInventory] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [SalesAndInventory] SET QUERY_STORE = OFF
+GO
+USE [SalesAndInventory]
+GO
+/****** Object:  Table [dbo].[Account]    Script Date: 8/4/2023 3:42:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Account](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[UserName] [nvarchar](20) NULL,
+	[Password] [nvarchar](20) NULL,
+	[FirstName] [nvarchar](50) NULL,
+	[LastName] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Inventory]    Script Date: 8/4/2023 3:42:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Inventory](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Barcode_Serial] [nvarchar](100) NULL,
+	[ItemDesc] [nvarchar](100) NULL,
+	[Image] [text] NULL,
+	[Price] [nvarchar](10) NULL,
+	[Qty] [int] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Inventory] ON 
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (1, N'Barcode1', N'Claw Hammer', N'Claw-hammer.jpg', N'520', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (2, N'Barcode2', N'Screw', N'Screw.jfif', N'320', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (3, N'Barcode3', N'Single Screw', N'Screw2.jpg', N'100', 500)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (4, N'Code3', N'Drill', N'MilwaukeeM12.jfif', N'1999', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (5, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (6, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (7, N'Barcode2', N'Screw', N'Screw.jfif', N'320', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (8, N'Barcode3', N'Single Screw', N'Screw2.jpg', N'100', 500)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (9, N'Barcode1', N'Claw Hammer', N'Claw-hammer.jpg', N'520', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (10, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (11, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (12, N'Code3', N'Drill', N'MilwaukeeM12.jfif', N'1999', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (13, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (14, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (15, N'Barcode2', N'Screw', N'Screw.jfif', N'320', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (16, N'Barcode3', N'Single Screw', N'Screw2.jpg', N'100', 500)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (17, N'Barcode1', N'Claw Hammer', N'Claw-hammer.jpg', N'520', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (18, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (19, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (20, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (21, N'Code3', N'Drill', N'MilwaukeeM12.jfif', N'1999', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (22, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (23, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (24, N'Barcode3', N'Single Screw', N'Screw2.jpg', N'100', 500)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (25, N'Barcode1', N'Claw Hammer', N'Claw-hammer.jpg', N'520', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (26, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (27, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (28, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (29, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (30, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (31, N'Code3', N'Drill', N'MilwaukeeM12.jfif', N'1999', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (32, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (33, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (34, N'Barcode1', N'Claw Hammer', N'Claw-hammer.jpg', N'520', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (35, N'Barcode2', N'Screw', N'Screw.jfif', N'320', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (36, N'Barcode3', N'Single Screw', N'Screw2.jpg', N'100', 500)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (37, N'Code3', N'Drill', N'MilwaukeeM12.jfif', N'1999', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (38, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (39, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (40, N'Barcode2', N'Screw', N'Screw.jfif', N'320', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (41, N'Barcode3', N'Single Screw', N'Screw2.jpg', N'100', 500)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (42, N'Barcode1', N'Claw Hammer', N'Claw-hammer.jpg', N'520', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (43, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (44, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (45, N'Code3', N'Drill', N'MilwaukeeM12.jfif', N'1999', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (46, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (47, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (48, N'Barcode2', N'Screw', N'Screw.jfif', N'320', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (49, N'Barcode3', N'Single Screw', N'Screw2.jpg', N'100', 500)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (50, N'Barcode1', N'Claw Hammer', N'Claw-hammer.jpg', N'520', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (51, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (52, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (53, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (54, N'Code3', N'Drill', N'MilwaukeeM12.jfif', N'1999', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (55, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (56, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (57, N'Barcode3', N'Single Screw', N'Screw2.jpg', N'100', 500)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (58, N'Barcode1', N'Claw Hammer', N'Claw-hammer.jpg', N'520', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (59, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (60, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (61, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (62, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (63, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (64, N'Code3', N'Drill', N'MilwaukeeM12.jfif', N'1999', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (65, N'Code2', N'Drill 2', N'Dewalt 20V.jfif', N'1499', 50)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (66, N'Barcode1.2', N'Regular Hammer', N'hammer2.jpg', N'400', 100)
+GO
+INSERT [dbo].[Inventory] ([ID], [Barcode_Serial], [ItemDesc], [Image], [Price], [Qty]) VALUES (67, N'1', N'1', N'264015472023TL2GYemRkia.jfif', N'1', 1)
+GO
+SET IDENTITY_INSERT [dbo].[Inventory] OFF
+GO
+/****** Object:  StoredProcedure [dbo].[GET_INVENTORY]    Script Date: 8/4/2023 3:42:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[GET_INVENTORY]
+	-- Add the parameters for the stored procedure here
+	
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT
+	* 
+	FROM Inventory
+
+	ORDER BY ID Desc
+
+
+END
+GO
+/****** Object:  StoredProcedure [dbo].[INSERT_INVENTORY]    Script Date: 8/4/2023 3:42:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+CREATE PROCEDURE [dbo].[INSERT_INVENTORY]
+	@CODE NVARCHAR(50),
+	@DESC NVARCHAR(50),
+	@PRICE NVARCHAR(50),
+	@QTY NVARCHAR(50),
+	@IMAGE text
+
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	
+	INSERT INTO Inventory
+	VALUES
+	(
+		@code,
+		@DESC,
+		@IMAGE,
+		@PRICE,
+		@QTY
+	)
+
+
+END
+GO
+USE [master]
+GO
+ALTER DATABASE [SalesAndInventory] SET  READ_WRITE 
+GO
