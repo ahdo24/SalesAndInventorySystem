@@ -46,15 +46,7 @@ namespace SalesAndInventorySystem
                         tran = con.BeginTransaction();
                         cmd.Transaction = tran;
 
-                        if (sp == "INSERT_INVENTORY")
-                        {
-                            cmd.Parameters.AddWithValue("@CODE", param.input_code);
-                            cmd.Parameters.AddWithValue("@DESC", param.input_desc);
-                            cmd.Parameters.AddWithValue("@PRICE", param.input_price);
-                            cmd.Parameters.AddWithValue("@QTY", param.input_qty);
-                            cmd.Parameters.AddWithValue("@IMAGE", param.input_image);
-
-                        }
+                        SQLParam(cmd, param);
 
                         cmd.ExecuteNonQuery();
 
@@ -69,10 +61,21 @@ namespace SalesAndInventorySystem
                     throw ex;
                 }
 
+            }
 
+            public void SQLParam(SqlCommand cmd, Parameters param)
+            {
+                string sp = param.sp;
 
+                if (sp == "INSERT_INVENTORY")
+                {
+                    cmd.Parameters.AddWithValue("@CODE", param.input_code);
+                    cmd.Parameters.AddWithValue("@DESC", param.input_desc);
+                    cmd.Parameters.AddWithValue("@PRICE", param.input_price);
+                    cmd.Parameters.AddWithValue("@QTY", param.input_qty);
+                    cmd.Parameters.AddWithValue("@IMAGE", param.input_image);
 
-
+                }
             }
 
 
