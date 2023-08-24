@@ -130,16 +130,18 @@ $(() => {
                 let data = JSON.parse(e.d)[0]
 
                 if (data != "invalid") {
-                    let { FirstName: fname, ID } = data
+                    let { FirstName: fname, ID, Role } = data
                     $('.modal_login').mousedown();
 
                     $('.user_con .name_con').html(fname)
 
                     ACC_ID = ID
+                    ROLE = Role
 
                     setTimeout(() => {
                         populateTable();
                     }, 100)
+
                 } else {
                     console.log(data)
                 }
@@ -162,7 +164,6 @@ $(() => {
 const activeSession = () => {
     $('.name_con').text(FIRSTNAME)
 
-    console.log(ROLE)
 }
 
 const getData = obj => {

@@ -120,7 +120,7 @@
     const USERNAME = "<%= Session["USERNAME"] %>"
     const FIRSTNAME = "<%= Session["FIRSTNAME"] %>"
     const LASTNAME = "<%= Session["LASTNAME"] %>"
-    const ROLE = "<%= Session["ROLE"] %>"
+    var ROLE = "<%= Session["ROLE"] %>"
 
 </script>
 
