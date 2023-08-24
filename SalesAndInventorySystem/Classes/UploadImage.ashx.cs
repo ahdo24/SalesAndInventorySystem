@@ -42,25 +42,27 @@ namespace SalesAndInventorySystem.Classes
                 param.input_image = HttpContext.Current.Request.Params["filename"]; 
                 param.sp = HttpContext.Current.Request.Params["sp"];
 
-
-                db.InsertData(param);
-
-                // Insert in image in directory
-                foreach (string s in context.Request.Files)
+                if (sp == "INSERT_INVENTORY")
                 {
-                    HttpPostedFile file = context.Request.Files[s];
-                    fileName = HttpContext.Current.Request.Params["filename"];
-                    filePath = HttpContext.Current.Server.MapPath(Path.Combine("~/" + folder + "/"));
+                    db.InsertData(param);
 
-                    if (!Directory.Exists(filePath))
+                    // Insert in image in directory
+                    foreach (string s in context.Request.Files)
                     {
-                        Directory.CreateDirectory(filePath);
-                    }
-                    if (!string.IsNullOrEmpty(fileName))
-                    {
-                        fileExtension = Path.GetExtension(fileName);
-                        str_file = fileName;
-                        file.SaveAs(filePath + str_file);
+                        HttpPostedFile file = context.Request.Files[s];
+                        fileName = HttpContext.Current.Request.Params["filename"];
+                        filePath = HttpContext.Current.Server.MapPath(Path.Combine("~/" + folder + "/"));
+
+                        if (!Directory.Exists(filePath))
+                        {
+                            Directory.CreateDirectory(filePath);
+                        }
+                        if (!string.IsNullOrEmpty(fileName))
+                        {
+                            fileExtension = Path.GetExtension(fileName);
+                            str_file = fileName;
+                            file.SaveAs(filePath + str_file);
+                        }
                     }
                 }
 

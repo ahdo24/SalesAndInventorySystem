@@ -89,11 +89,11 @@ body {
     background: var(--pink);
     color: var(--white);
 }
-.logo_con_child i.fa-bell {
+.logo_con_child :is(i.fa-bell,i.fa-shopping-cart) {
     position: relative;
     cursor: pointer;
 }
-.logo_con_child i.fa-bell::after {
+.logo_con_child :is(i.fa-bell,i.fa-shopping-cart)::after {
     content: attr(data-count);
     position: absolute;
     top: -6px;
@@ -110,7 +110,7 @@ body {
     border: 1px solid var(--white);
     transition: 350ms ease;
 }
-.logo_con_child:hover > i.fa-bell::after {
+.logo_con_child:hover > :is(i.fa-bell,i.fa-shopping-cart)::after {
     background: var(--white);
     border: 1px solid var(--pink);
     color: var(--pink);

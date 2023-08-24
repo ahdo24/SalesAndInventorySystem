@@ -26,10 +26,10 @@
                 <div class="nav">
                     <div class="logo_con">
                         <div class="logo_con_child">
-                            <i class="fa fa-bell" data-count="9" aria-hidden="true"></i>
+                            <i class="fa fa-bell" data-count="9"></i>
                         </div>
                         <div class="logo_con_child">
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            <i class="fa fa-shopping-cart" data-count="5"></i>
                         </div>
 
                     </div>
@@ -74,7 +74,7 @@
                     <div class="submit_btn btn">SUBMIT</div>
                 </div>
 
-                <%-- ITEM MODAL --%>
+                <%-- ITEM --%>
                 <div class="item_modal modal_child">
                     <div class="modal_header">Insert Item</div>
                     <div class="modal_body">
@@ -96,7 +96,10 @@
                     <div class="cancel_btn btn">CANCEL</div>
                 </div>
 
-
+                <%-- CART-working on progress --%>
+                <div class="cart_modal modal_child" style="display:none"> 
+                    asd
+                </div>
             </div>
 
 
@@ -117,9 +120,9 @@
 
 <script>
     var ACC_ID = "<%= Session["ID"] %>"
-    const USERNAME = "<%= Session["USERNAME"] %>"
-    const FIRSTNAME = "<%= Session["FIRSTNAME"] %>"
-    const LASTNAME = "<%= Session["LASTNAME"] %>"
+    var USERNAME = "<%= Session["USERNAME"] %>"
+    var FIRSTNAME = "<%= Session["FIRSTNAME"] %>"
+    var LASTNAME = "<%= Session["LASTNAME"] %>"
     var ROLE = "<%= Session["ROLE"] %>"
 
 </script>

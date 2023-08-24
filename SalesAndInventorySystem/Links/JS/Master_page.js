@@ -127,10 +127,10 @@ $(() => {
                 url: '/Pages/Home.aspx/Login',
                 data: JSON.stringify({ param: obj })
             }).then(e => {
-                let data = JSON.parse(e.d)[0]
+                let data = JSON.parse(e.d)
 
                 if (data != "invalid") {
-                    let { FirstName: fname, ID, Role } = data
+                    let { FirstName: fname, ID, Role } = data[0]
                     $('.modal_login').mousedown();
 
                     $('.user_con .name_con').html(fname)
@@ -140,10 +140,17 @@ $(() => {
 
                     setTimeout(() => {
                         populateTable();
+                        basedOnRoleUI();
                     }, 100)
 
                 } else {
-                    console.log(data)
+                    sweetAlert({
+                        title: 'User/Password incorrect please try again.',
+                        icon: 'warning'
+                    })
+
+                    $('.pass').val('').addClass('invalid_input')
+                    $('.email').focus().addClass('invalid_input')
                 }
             })
 
@@ -164,6 +171,22 @@ $(() => {
 const activeSession = () => {
     $('.name_con').text(FIRSTNAME)
 
+    basedOnRoleUI();
+}
+
+const basedOnRoleUI = () => {
+    if (ROLE == 'admin') {
+        $('.logo_con_child:has(.fa-bell)').show()
+        $('.logo_con_child:has(.fa-shopping-cart)').hide()
+    }
+    else if (ROLE == 'cashier') {
+        $('.logo_con_child:has(.fa-bell)').hide()
+        $('.logo_con_child:has(.fa-shopping-cart)').show()
+    }
+    else {
+        $('.logo_con_child:has(.fa-shopping-cart)').hide()
+        $('.logo_con_child:has(.fa-bell)').hide()
+    }
 }
 
 const getData = obj => {
