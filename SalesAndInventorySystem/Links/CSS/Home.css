@@ -32,8 +32,12 @@
     text-align: center;
     letter-spacing: 1px;
 }
-.sales_con .add_btn {
+.add_btn {
     cursor: pointer;
+}
+.add_btn_hide {
+    visibility: hidden;
+    opacity: 0;
 }
 .sales_con tbody tr.add_btn i {
     font-size: 5rem;
@@ -94,8 +98,35 @@
 .item_details .bottom.item_qty {
     right: 0;
 }
-
-
+.table_buttons {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--black);
+}
+.table_buttons div {
+    font-size: 22px;
+    cursor: pointer;
+    width: 40px;
+    border-radius: 5px;
+}
+.table_buttons div:has(i.fa-pencil):hover {
+    color: green;
+    border: 1px solid green;
+}
+.table_buttons div:has(i.fa-trash):hover {
+    border: 1px solid red;
+    color: red;
+} 
+.sales_con .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 
 
 

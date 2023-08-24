@@ -9,23 +9,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         
     <div class="sales_con">
-        <table class="sales_and_inventory">
+        <table class="sales_and_inventory" id="">
             <thead style="display:none">
                 <tr>
                     <th>Image</th>
                     <th>Item Details</th>
                 </tr>
             </thead>
-            <tbody>
-
-                 <tr class="add_btn">
-                    <td>
-                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
-                    </td>
-                    <td></td>
-                </tr>
-               
-            </tbody>
+            <tbody> </tbody>
         </table>
     </div>
 

@@ -22,14 +22,30 @@
 })
 
 $(() => {
-    $('.user_con').click(() => {
-        $('.modal_login').addClass('show_modal_login')
-        $('.login').addClass('show_modal_child')
+    activeSession()
+
+    $('.user_con').click(e => {
+        if ($('.user_con .name_con').text() == "") {
+            $('.modal_login').addClass('show_modal_login')
+            $('.login').addClass('show_modal_child')
+
+            setTimeout(() => {
+                $('.show_modal_child .email').focus()
+            }, 250)
+
+        } else {
+            $('.dropdown_login').toggleClass('dropdown_login_show')
+        }
+    })
+    $('.user_con .dropdown_login').mouseleave(() => {
+        $('.dropdown_login').removeClass('dropdown_login_show')
     })
 
     $('.modal_login').mousedown(() => {
         $('.modal_login').removeClass('show_modal_login')
         $('.show_modal_child').removeClass('show_modal_child')
+
+        $('.login input').removeClass('invalid_input')
     })
 
     $('.login').mousedown(e => e.stopPropagation())
@@ -92,9 +108,62 @@ $(() => {
             $('.preview_image_con').removeClass('invalid_input')
         }
     })
+
+    $('.login .submit_btn').click(() => {
+        let invalid = requiredInput($('.login .req'))
+
+        if (invalid.length > 0) {
+            sweetAlert({
+                title: 'Please check required fields',
+                icon: 'warning',
+            })
+        } else {
+            let obj = {
+                login_email: $('.email').val(),
+                login_pass: $('.pass').val()
+            }
+
+            getData({
+                url: '/Pages/Home.aspx/Login',
+                data: JSON.stringify({ param: obj })
+            }).then(e => {
+                let data = JSON.parse(e.d)[0]
+
+                if (data != "invalid") {
+                    let { FirstName: fname, ID } = data
+                    $('.modal_login').mousedown();
+
+                    $('.user_con .name_con').html(fname)
+
+                    ACC_ID = ID
+
+                    setTimeout(() => {
+                        populateTable();
+                    }, 100)
+                } else {
+                    console.log(data)
+                }
+            })
+
+
+
+
+        }
+
+
+    })
+
+    $('.logout_btn').click(() => {
+        getData({ url: '/Pages/Home.aspx/Logout'  })
+        location.reload()
+    })
 })
 
+const activeSession = () => {
+    $('.name_con').text(FIRSTNAME)
 
+    console.log(ROLE)
+}
 
 const getData = obj => {
     obj.data ??= ''
@@ -162,6 +231,8 @@ const randChar = length => {
 
     return time_date + result;
 }
+
+
 
 
 

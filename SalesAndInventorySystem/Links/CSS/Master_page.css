@@ -16,7 +16,6 @@
     scroll-behavior: smooth;
     transition: 250ms ease-out;
 }
-
 body {
     overflow-x: hidden;
 }
@@ -75,6 +74,48 @@ body {
     height: 30px;
     transition: 250ms ease-in-out;
 }
+.logo_con {
+    padding: 0px 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    gap: 15px;
+}
+.logo_con_child {
+    padding: 0px 5px;
+    border-radius: 3px;
+}
+.logo_con_child:hover {
+    background: var(--pink);
+    color: var(--white);
+}
+.logo_con_child i.fa-bell {
+    position: relative;
+    cursor: pointer;
+}
+.logo_con_child i.fa-bell::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -6px;
+    right: -9px;
+    color: var(--white);
+    background: var(--pink-lg);
+    border-radius: 50%;
+    font-size: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 4px;
+    border: 1px;
+    border: 1px solid var(--white);
+    transition: 350ms ease;
+}
+.logo_con_child:hover > i.fa-bell::after {
+    background: var(--white);
+    border: 1px solid var(--pink);
+    color: var(--pink);
+}
+
 .global_search_width {
     width: 200px;
 }
@@ -96,11 +137,51 @@ body {
     padding: 0px 5px;
     border-radius: 3px;
     cursor: pointer;
+    position: relative;
 }
 .user_con:hover {
     background: var(--pink);
     color: var(--white);
 }
+.user_con .name_con {
+    font-size: 16px;
+    letter-spacing: 1px
+}
+
+.dropdown_login {
+    position: absolute;
+    padding: 10px 5px;
+    right: 0px;
+    border-radius: 3px;
+    border: 1px solid var(--pink-lg);
+    color: var(--pink-lg);
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    overflow: hidden;
+    font-size: 14px;
+    background: transparent;
+    backdrop-filter: blur(3px);
+
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+.dropdown_login_show {
+    height: 100px;
+    opacity: 1;
+    visibility: visible;
+}
+.dropdown_login_show span {
+    padding: 2px 10px;
+    border-radius: 2px;
+}
+.dropdown_login_show span:hover {
+    background: var(--pink);
+    color: var(--fff);
+}
+
 
 /* Content */
 .content {
@@ -169,11 +250,13 @@ body {
     bottom: 30px;
     border: none;
     border-bottom: 1px solid #d4d4d4;
-    padding: 10px;
+    padding: 10px 10px 5px 10px;
     width: 100%;
     background: transparent;
     transition: all .5s ease-in-out;
     letter-spacing: 2px;
+    border-radius: 3px;
+    margin-top: 5px;
 }
 
 .login input:focus {

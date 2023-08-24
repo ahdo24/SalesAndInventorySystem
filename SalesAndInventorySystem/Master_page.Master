@@ -12,13 +12,10 @@
     <link href="/Links/CSS/dataTables.min.css" rel="stylesheet" />
     <link href="/Links/CSS/Master_page.css" rel="stylesheet" />
 
+
     <%--CUSTOM CSS / CSS PER PAGE--%>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-
-
-
-
 
 </head>
 <body>
@@ -27,14 +24,30 @@
 
             <div class="nav_con" data-position="0">
                 <div class="nav">
-                    <div class="logo_con">logo</div>
+                    <div class="logo_con">
+                        <div class="logo_con_child">
+                            <i class="fa fa-bell" data-count="9" aria-hidden="true"></i>
+                        </div>
+                        <div class="logo_con_child">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                        </div>
+
+                    </div>
                     <div class="search_con">
                         <input class="global_search" type="text" name="global_search" value="" placeholder="Search"/>
                         <i class="search_btn fa fa-search" ></i>
                     </div>
                     <div class="user_con">
+                        <span class="name_con"></span>
                         <i class="fa fa-user"></i>
+
+                        <div class="dropdown_login">
+                            <span>Accounts</span>
+                            <span>History</span>
+                            <span class="logout_btn">Logout</span>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
@@ -49,20 +62,20 @@
 
 
             <%-- MODAL --%>
-            <div class="modal_login show_modal_login">
+            <div class="modal_login">
                 
                 <%-- LOGIN --%>
                 <div class="login modal_child">
                     <p>Login</p>
-                    <input placeholder="Username" name="email" type="email">
+                    <input placeholder="Username" class="email req" type="email">
                     <br>
-                    <input placeholder="Password" name="pass" type="password">
+                    <input placeholder="Password" class="pass req" type="password">
                     <br>
                     <div class="submit_btn btn">SUBMIT</div>
                 </div>
 
                 <%-- ITEM MODAL --%>
-                <div class="item_modal modal_child show_modal_child">
+                <div class="item_modal modal_child">
                     <div class="modal_header">Insert Item</div>
                     <div class="modal_body">
                         <div class="preview_image_con">
@@ -71,12 +84,10 @@
                             <input id="input_image" class="input_image req modal_input" type="file" name="upload_image" accept="image/*"/>
                         </div>
                         <div class="input_con">   
-
                             <input class="input_code req input_full modal_input" type="text" placeholder="Code" />
                             <input class="input_desc req input_full modal_input" type="text" placeholder="Description" />
                             <input class="input_price req input_half modal_input" type="text" placeholder="Price" />
                             <input class="input_qty req input_half modal_input" type="text" placeholder="Qty" />
-
                         </div>
 
                     </div>
@@ -104,9 +115,16 @@
 <script src="/Links/JS/jquery-ui.js"></script>
 <script src="/Links/JS/sweetalert2.js"></script>
 
+<script>
+    var ACC_ID = "<%= Session["ID"] %>"
+    const USERNAME = "<%= Session["USERNAME"] %>"
+    const FIRSTNAME = "<%= Session["FIRSTNAME"] %>"
+    const LASTNAME = "<%= Session["LASTNAME"] %>"
+    const ROLE = "<%= Session["ROLE"] %>"
+
+</script>
 
 <script src="/Links/JS/Master_page.js"></script>
-
 
 
 <%--CUSTOM SCRIPTS / SCRIPTS PER PAGE--%>
