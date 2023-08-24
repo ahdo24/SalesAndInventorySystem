@@ -54,8 +54,8 @@ const tableDependableEvents = () => {
             image : $(e.target).parent()[0].dataset.img,
             code : $($(e.target).parent().parent().parent().find('.item_code')[0]).text(),
             desc : $($(e.target).parent().parent().parent().find('.item_desc')[0]).text(),
-            price : $($(e.target).parent().parent().parent().find('.item_price')[0]).text(),
-            qty : $($(e.target).parent().parent().parent().find('.item_qty')[0]).text(),
+            price : $($(e.target).parent().parent().parent().find('.item_price span')[0]).text(),
+            qty : $($(e.target).parent().parent().parent().find('.item_qty span')[0]).text(),
         }
 
         $('.preview_image')[0].src = '/Images/' + input.image
@@ -180,8 +180,8 @@ const populateTable = () => {
                                 </div >
                                  <div class="item_code top"> ${item.Barcode_Serial} </div>
                                  <div class="item_desc top"> ${item.ItemDesc} </div>
-                                 <div class="item_price bottom"> P${item.Price} </div>
-                                 <div class="item_qty bottom"> ${item.Qty} Qty </div>
+                                 <div class="item_price bottom"> P<span>${item.Price}</span> </div>
+                                 <div class="item_qty bottom"> <span>${item.Qty}</span> Qty </div>
                             </div>
                         </td>
                     </tr>                        
