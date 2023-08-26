@@ -149,6 +149,8 @@ const tableDependableEvents = () => {
 
     $('.initial_cancel').click(e => {
         $(e.target).parent().parent().removeClass('add_to_cart_initial_inputs_show')
+
+        $(e.target).parent().parent().find('.initial_qty').val('').keyup()
     })
 
     $('.initial_qty').keyup(e => {
@@ -162,9 +164,8 @@ const tableDependableEvents = () => {
         let total_amount = price * input
         let total_qty = qty[0].dataset.qty - input
 
-        $('.initial_qty').parent().find('div > .intial_total').text(total_amount)
+        this_input.parent().find('div > .intial_total').text(total_amount)
         qty.text(total_qty)
-
 
 
     })
