@@ -26,10 +26,10 @@
                 <div class="nav">
                     <div class="logo_con">
                         <div class="logo_con_child">
-                            <i class="fa fa-bell" data-count="9"></i>
+                            <i class="fa fa-bell" data-count=""></i>
                         </div>
                         <div class="logo_con_child">
-                            <i class="fa fa-shopping-cart" data-count="5"></i>
+                            <i class="fa fa-shopping-cart" data-count=""></i>
                         </div>
 
                     </div>
@@ -50,7 +50,7 @@
 
                 </div>
             </div>
-
+            
 
             <%-- CONTENT --%>
             <div class="content">
@@ -76,12 +76,12 @@
 
                 <%-- ITEM --%>
                 <div class="item_modal modal_child">
-                    <div class="modal_header">Insert Item</div>
+                    <div class="modal_header"><span>Insert</span> Item</div>
                     <div class="modal_body">
                         <div class="preview_image_con">
                             <img class="preview_image" src="#" />
                             <span class="upload_image_label show_image">Upload Image <i class="fa fa-file" aria-hidden="true"></i> </span>
-                            <input id="input_image" class="input_image req modal_input" type="file" name="upload_image" accept="image/*"/>
+                            <input id="input_image" class="input_image req_image modal_input" type="file" name="upload_image" accept="image/*"/>
                         </div>
                         <div class="input_con">   
                             <input class="input_code req input_full modal_input" type="text" placeholder="Code" />

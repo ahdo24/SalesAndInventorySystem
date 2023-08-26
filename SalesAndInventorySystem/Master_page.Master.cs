@@ -16,6 +16,7 @@ namespace SalesAndInventorySystem
             public string sp { set; get; }
 
             // Inventory param
+            public string input_id { set; get; }
             public string input_code { set; get; }
             public string input_desc { set; get; }
             public string input_price { set; get; }
@@ -33,15 +34,14 @@ namespace SalesAndInventorySystem
             // Database Connection
             public string connDB = ConfigurationManager.AppSettings["dbConn"];
 
-            #region Insert Data from Database
-            
-
-            public DataTable InsertData(Parameters param)
+            #region Insert/Update Data from Database
+            public DataTable InsertData(Parameters param) 
             {
                 DataTable dt = new DataTable();
 
                 string sp = param.sp;
                 SqlTransaction tran = null;
+
 
                 try
                 {
@@ -57,6 +57,7 @@ namespace SalesAndInventorySystem
                         SQLParam(cmd, param);
 
                         dt.Load(cmd.ExecuteReader());
+                        //dt.Rows.Add("success");
 
                         tran.Commit();
                         con.Close();
@@ -67,6 +68,7 @@ namespace SalesAndInventorySystem
                 {
                     tran.Rollback();
                     throw ex;
+                    //dt.Rows.Add(ex.Message);
                 }
 
                 return dt;
@@ -74,7 +76,6 @@ namespace SalesAndInventorySystem
             }
 
             #endregion
-
 
 
             #region Get Data
@@ -115,9 +116,7 @@ namespace SalesAndInventorySystem
 
             }
 
-
             #endregion
-
 
 
             #region Parameters
@@ -132,14 +131,28 @@ namespace SalesAndInventorySystem
                     cmd.Parameters.AddWithValue("@PRICE", param.input_price);
                     cmd.Parameters.AddWithValue("@QTY", param.input_qty);
                     cmd.Parameters.AddWithValue("@IMAGE", param.input_image);
-
                 }
 
                 if (sp == "LOGIN_ACCOUNT")
                 {
                     cmd.Parameters.AddWithValue("@USER", param.login_email);
                     cmd.Parameters.AddWithValue("@PASS", param.login_pass);
+                }
 
+                if (sp == "UPDATE_INVENTORY")
+                {
+                    cmd.Parameters.AddWithValue("@ID", param.input_id);
+                    cmd.Parameters.AddWithValue("@BARCODE", param.input_code);
+                    cmd.Parameters.AddWithValue("@DESC", param.input_desc);
+                    cmd.Parameters.AddWithValue("@IMG", param.input_image);
+                    cmd.Parameters.AddWithValue("@PRICE", param.input_price);
+                    cmd.Parameters.AddWithValue("@QTY", param.input_qty);
+
+                }
+
+                if (sp == "DELETE_INVENTORY")
+                {
+                    cmd.Parameters.AddWithValue("@ID", param.input_id);
                 }
 
 

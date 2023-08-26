@@ -63,8 +63,6 @@ namespace SalesAndInventorySystem.Pages
             }
         }
 
-
-
         [WebMethod]
         public static string Login(Parameters param)
         {
@@ -103,6 +101,13 @@ namespace SalesAndInventorySystem.Pages
             HttpContext.Current.Response.Cache.SetNoStore();
         }
 
+        [WebMethod]
+        public static void DeleteData(Parameters param)
+        {
+            Database db = new Database();
+
+            db.InsertData(param);
+        }
 
     }
 }

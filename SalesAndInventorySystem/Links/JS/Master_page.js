@@ -11,11 +11,13 @@
         nav.removeClass('nav_hide')
     }
 
-    if (
-        $('.global_search:focus').length > 0
-        || 
-        $('.global_search').val() != ""
-        ) {
+    if ($('.global_search:focus').length > 0
+        || $('.global_search').val() != "") {
+        nav.removeClass('nav_hide');
+        nav.mouseover();
+    }
+
+    if ($('.nav:has(:is(.user_con,.logo_con_child):hover)').length > 0) {
         nav.removeClass('nav_hide');
         nav.mouseover();
     }
@@ -202,9 +204,9 @@ const getData = obj => {
 }
 
 const requiredInput = inputs => {
-    
+
     let input = inputs.map((i, field) => {
-        if (field.value == '') {
+        if (field.value.trim() == '' ) {
             $(field).addClass('invalid_input')
 
             if (field.classList[0] == $("#input_image")[0].classList[0]) {
@@ -230,6 +232,27 @@ const sweetAlert = config => {
     Toast.fire({
         icon: config.icon,
         title: config.title
+    })
+}
+
+const sweetAlertConfirmation = (callback) => {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            callback()
+
+            sweetAlert({
+                title: 'Deleted succesfully',
+                icon: 'success'
+            })
+        }
     })
 }
 

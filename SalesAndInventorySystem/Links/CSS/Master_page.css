@@ -2,6 +2,7 @@
     --fff: #fff;
     --bbb: #000;
     --white: #FFF2F9;
+    --dim_white: #ffffff87;
     --black: #707070;
     --dim: #1c1c1ccf;
     --pink: #FA4EAB;
@@ -27,9 +28,12 @@ body {
     position: relative;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-#master_div:has(.show_modal_login) {
-    overflow: hidden;
-}
+/*#master_div:has(.show_modal_login){*/
+    /*overflow: hidden;*/
+    /*display: none;
+}*/
+
+
 
 /* Navigation bar */
 .nav_con {
@@ -93,7 +97,7 @@ body {
     position: relative;
     cursor: pointer;
 }
-.logo_con_child :is(i.fa-bell,i.fa-shopping-cart)::after {
+.logo_con_child i[data-count]:not([data-count=""])::after {
     content: attr(data-count);
     position: absolute;
     top: -6px;
@@ -110,6 +114,7 @@ body {
     border: 1px solid var(--white);
     transition: 350ms ease;
 }
+
 .logo_con_child:hover > :is(i.fa-bell,i.fa-shopping-cart)::after {
     background: var(--white);
     border: 1px solid var(--pink);
@@ -129,6 +134,10 @@ body {
     color: var(--white);
 }
 .nav:has(.global_search:focus) {
+    color: var(--pink);
+    border: 1px solid var(--pink);
+}
+.nav:has(:is(.user_con,.logo_con_child):hover) {
     color: var(--pink);
     border: 1px solid var(--pink);
 }
@@ -161,7 +170,7 @@ body {
     justify-content: space-evenly;
     overflow: hidden;
     font-size: 14px;
-    background: transparent;
+    background: var(--fff);
     backdrop-filter: blur(3px);
 
     height: 0;
