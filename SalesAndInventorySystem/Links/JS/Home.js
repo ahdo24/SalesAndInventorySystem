@@ -56,14 +56,13 @@
 
     })
 
-    $('.sales_con').click(() => {
-        tableDependableEvents();
-    })
+    $('.sales_con').mouseover(() => tableDependableEvents())
+
 
 
 })
 const tableDependableEvents = () => {
-    $('.add_btn').click(() => {
+    $('.sales_con .add_btn').click(() => {
         $('.modal_login').addClass('show_modal_login')
         $('.item_modal').addClass('show_modal_child')
 
@@ -76,7 +75,7 @@ const tableDependableEvents = () => {
         }
     })
 
-    $('.edit_btn i').click(e => {
+    $('.sales_con .edit_btn i').click(e => {
         $('.modal_login').addClass('show_modal_login')
         $('.item_modal').addClass('show_modal_child')
         $('.modal_header span').text('Update')
@@ -103,12 +102,12 @@ const tableDependableEvents = () => {
         $('.item_modal .submit_btn').text('UPDATE').addClass('update_btn').attr('data-id', input.id)
 
     })
-    $('.edit_btn').click(e => {
+    $('.sales_con .edit_btn').click(e => {
         e.stopPropagation()
         $(e.target).children().click()
     })
 
-    $('.delete_btn i').click(e => {
+    $('.sales_con .delete_btn i').click(e => {
         let id = $(e.target).parent()[0].dataset.id
 
         sweetAlertConfirmation(() => {
@@ -128,7 +127,7 @@ const tableDependableEvents = () => {
         })
 
     })
-    $('.delete_btn').click(e => {
+    $('.sales_con .delete_btn').click(e => {
         e.stopPropagation()
         $(e.target).children().click()
     })
@@ -153,24 +152,80 @@ const tableDependableEvents = () => {
         $(e.target).parent().parent().find('.initial_qty').val('').keyup()
     })
 
-    $('.initial_qty').keyup(e => {
+    $('.initial_qty').unbind().keyup(e => {
+        let status = onlyNumber(e)
+
         let this_input = $(e.target)
         let item_details = this_input.parent().parent().parent().parent().parent()
-
         let price = item_details.find('.item_price span').text()
         let qty = item_details.find('.item_qty span')
         let input = this_input.val()
+        let stock = parseInt(qty[0].dataset.qty)
+        let add_btn = this_input.parent().parent().find('button[class="initial_add"]')
+
 
         let total_amount = price * input
-        let total_qty = qty[0].dataset.qty - input
+        let total_qty = stock - input
 
-        this_input.parent().find('div > .intial_total').text(total_amount)
-        qty.text(total_qty)
+
+        if (input == "" ) {
+            this_input.parent().find('div > .intial_total').text(0)
+            qty.text(stock)
+
+            add_btn.attr('disabled', 'true')
+            return
+        }
+
+        if (parseInt(total_qty) < 0) status = 'invalid'
+
+
+        if (status == 'valid') {
+            this_input.removeClass('invalid_input')
+
+            this_input.parent().find('div > .intial_total').text(total_amount)
+            qty.text(total_qty)
+
+            add_btn.removeAttr('disabled')
+        }
+        else {
+            this_input.addClass('invalid_input')
+
+            this_input.parent().find('div > .intial_total').text(0)
+            qty.text(stock)
+
+            add_btn.attr('disabled','true')
+
+            sweetAlert({
+                icon: 'warning',
+                title: 'Insuficient stock please check your input.'
+            })
+
+        }
+
 
 
     })
 
+    $('.initial_add').unbind().click(e => {
+        let item_details = $(e.target).parent().parent().parent().parent().parent()
+
+        let details = {
+            stock : item_details.find('.item_qty span').attr('data-qty'),
+            price : item_details.find('.item_price span').text(),
+            desc : item_details.find('.item_desc').text(),
+            img : item_details.find('.add_to_cart').attr('data-img'),
+            input : item_details.find('.initial_qty').val()
+        }
+
+
+        console.log(details)
+        
+
+    })
+
+
 }
+
 
 const insertImage = formData => {
     let file = $('#input_image')[0].files[0]
@@ -325,7 +380,7 @@ const populateTable = () => {
         });
 
        
-        tableDependableEvents();
+        //tableDependableEvents();
     })
 
 
@@ -356,8 +411,8 @@ const tableBtnBasedOnRole = item => {
                         <div>Total: P<span class="intial_total">0</span></div>
                     </div>
                     <div class="initial_btn_con">
-                        <button class="initial_add" data-id="${item.ID}">Add</button>
-                        <button class="initial_cancel data-id="${item.ID}"">Cancel</button>
+                        <button class="initial_add" data-id="${item.ID}" disabled>Add</button>
+                        <button class="initial_cancel" data-id="${item.ID}" >Cancel</button>
                     </div>
                 </div>
             </div>

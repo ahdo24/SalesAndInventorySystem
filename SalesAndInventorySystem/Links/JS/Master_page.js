@@ -168,6 +168,35 @@ $(() => {
         getData({ url: '/Pages/Home.aspx/Logout'  })
         location.reload()
     })
+
+
+    $('.logo_con_child:has(.fa-shopping-cart)').click(() => {
+        $('.modal_login ').addClass('show_modal_login')
+        $('.cart_modal').addClass('show_modal_child')
+    })
+
+    $('.cart_modal').mousedown(e => e.stopPropagation())
+
+    $('.cart_modal .ordered_qty button').click(e => e.preventDefault())
+
+    $('.cart_modal .final_qty').keyup(e => {
+        let status = onlyNumber(e)
+
+        if (status == 'invalid') {
+            sweetAlert({
+                icon: 'warning',
+                title: 'Input must be number/s only.'
+            })
+            return
+        }
+    })
+    $('.cart_modal .fa-minus').click(e => {
+
+    })
+    $('.cart_modal .fa-plus').click(e => {
+
+    })
+
 })
 
 const activeSession = () => {
@@ -279,7 +308,42 @@ const randChar = length => {
     return time_date + result;
 }
 
+const onlyNumber = e => {
+    let status = ""
 
+    // Accepts only number
+    var self = $(e.target);
+    self.val(self.val().replace(/\D/g, ""));
+
+    if (self.val() == 0 || e.which == 32) {
+        self.val('')
+        self[0].classList.remove('invalid_input');
+
+        return
+    }
+    
+    // numbers from keyboard including backspace and tab
+    if ((e.which >= 48 && e.which < 58) //numbers in main keyboard
+        || (e.which > 95 && e.which < 106) //
+        || e.which == 8
+        || e.which == 13)
+    {
+        e.preventDefault();
+
+        status = 'valid'
+    }
+    else {
+        sweetAlert({
+            icon: 'error',
+            title: "Input must be numeric"
+        });
+        self[0].classList.add('invalid_input');
+
+        status = 'invalid'
+    }
+
+    return status
+}
 
 
 

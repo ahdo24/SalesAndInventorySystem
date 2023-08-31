@@ -97,18 +97,46 @@
                 </div>
 
                 <%-- CART-working on progress --%>
-                <div class="cart_modal modal_child" style="display:none"> 
-                    asd
+                <div class="cart_modal modal_child"> 
+                    <div class="modal_header"><span>Cart</span></div>
+                    <div class="modal_body">
+                        
+                        <div class="order_con">
+                            <div class="details_con">
+                                <div class="img_con">
+                                    <img src="/Images/501282672023DzPbbhtStmTf5NF9RccJV8PeIhSSImPnNA8E5NnAyHC.jfif"/>
+                                </div>
+                                <div class="ordered_item_details">
+                                    <div class="desc">Desc: <span>Helmet limited time promo</span></div>
+                                    <div class="stock">Stock: <span>10</span> Qty</div>
+                                    <div class="price">Price: P<span>50</span></div>
+                                </div>
+                            </div>
+
+                            <div class="final_ordered_con">
+                                <div class="total_amount">
+                                    P <span>100</span>
+                                </div>
+                                <div class="ordered_qty">
+                                    <button ><i class="fa fa-minus"></i></button>
+                                    <input type="text" class="final_qty" value="2" />
+                                    <button ><i class="fa fa-plus"></i></button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+
                 </div>
             </div>
 
 
         </div>
     </form>
-
-
-</body>
-</html>
 
 <%--GENERAL SCRIPTS--%>
 <script src="/Links/JS/jquery-3.7.0.min.js"></script>
@@ -133,3 +161,7 @@
 <%--CUSTOM SCRIPTS / SCRIPTS PER PAGE--%>
 <asp:ContentPlaceHolder ID="scripts" runat="server">
 </asp:ContentPlaceHolder>
+
+
+</body>
+</html>

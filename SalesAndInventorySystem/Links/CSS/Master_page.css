@@ -350,7 +350,7 @@ body {
 }
 
 /* ITEM MODAL */
-.item_modal {
+.item_modal, .cart_modal {
     transform: translateY(250%);
     height: 70%;
     width: 30%;
@@ -441,6 +441,99 @@ body {
     box-shadow: 0 0 3px red !important;
     background: transparent !important;
 }
+
+button[disabled] {
+    cursor: not-allowed !important;
+    background: var(--dim) !important;
+}
+button[disabled]:hover {
+    cursor: not-allowed !important;
+    background: var(--dim) !important;
+}
+.cart_modal {
+    width: 40%;
+}
+
+.cart_modal .order_con {
+    background: var(--dim);
+    height: 70px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 3px;
+    padding: 1px;
+}
+
+.cart_modal .details_con {
+    width: 70%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+    display: flex;
+    font-size: 11px;
+    gap: 5px;
+    align-items: center;
+    color: var(--fff);
+}
+
+.cart_modal .img_con {
+    width: 75px;
+    height: 100%;
+    overflow: hidden;
+}
+.cart_modal .img_con img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cart_modal .ordered_item_details {
+    width: 75%;
+}
+.cart_modal .ordered_item_details div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    color: var(--pink-lg);
+    font-weight: bold;
+}
+.cart_modal .ordered_item_details div span {
+    color: var(--fff);
+}
+.cart_modal .total_amount {
+    color: var(--pink-lg);
+}
+.cart_modal .total_amount span {
+    color: var(--fff);
+}
+.cart_modal .final_ordered_con {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--fff);
+}
+.cart_modal .ordered_qty {
+    overflow: hidden;
+}
+.cart_modal .ordered_qty button {
+    all: unset;
+    cursor: pointer;
+}
+.cart_modal .ordered_qty button:hover {
+    color: var(--pink);
+    font-weight: bold;
+}
+.cart_modal .ordered_qty input[type="text"]{
+    width: 30px;
+    margin-top: 10%;
+    color: var(--fff);
+}
+
+
+
 
 
 
