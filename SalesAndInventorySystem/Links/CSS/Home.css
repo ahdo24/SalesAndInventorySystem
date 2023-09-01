@@ -49,8 +49,24 @@
 .sales_con tbody tr:hover {
     border: 1px solid var(--pink);
 }
-.sales_con tbody tr:has(.add_to_cart_initial_inputs_show) {
+.sales_con tbody is(tr:has(.add_to_cart_initial_inputs_show),tr:has(.show_legend)) {
     border: 1px solid var(--pink);
+}
+.sales_con tbody tr[class] {
+    position: relative;
+}
+.sales_con tbody tr[class] .legend_star {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+
+    visibility: hidden;
+    opacity: 0;
+}
+.sales_con tbody tr[class] .show_legend {
+    visibility: visible;
+    opacity: 1;
 }
 
 .sales_con tbody tr:not(.add_btn) td {
@@ -135,7 +151,8 @@
     box-shadow: 0 0 10px var(--pink);
     transition: 100ms ease;
     background: var(--dim_white);
-} 
+}
+    
 .sales_con .header {
     display: flex;
     align-items: center;

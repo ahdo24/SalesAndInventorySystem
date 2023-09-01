@@ -146,22 +146,29 @@ const tableDependableEvents = () => {
     $('.add_to_cart').click(e => e.stopPropagation())
     $('.initial_btn_con').click(e => e.preventDefault())
 
-    $('.initial_cancel').click(e => {
-        $(e.target).parent().parent().removeClass('add_to_cart_initial_inputs_show')
+    $('.initial_cancel').unbind().click(e => {
+        $(e.target).closest('.add_to_cart_initial_inputs').removeClass('add_to_cart_initial_inputs_show')
 
-        $(e.target).parent().parent().find('.initial_qty').val('').keyup()
+        $(e.target).closest('.add_to_cart_initial_inputs').find('.initial_qty').val('').keyup()
+
+        let id = $(e.target).attr('data-id')
+
+        if ($(`.cart_modal .order_con[data-id="${id}"]`).length > 0)
+            $(`.cart_modal .order_con[data-id="${id}"]`).remove()
+
     })
 
     $('.initial_qty').unbind().keyup(e => {
         let status = onlyNumber(e)
 
         let this_input = $(e.target)
-        let item_details = this_input.parent().parent().parent().parent().parent()
+        let item_details = this_input.closest('.item_details')
         let price = item_details.find('.item_price span').text()
         let qty = item_details.find('.item_qty span')
         let input = this_input.val()
         let stock = parseInt(qty[0].dataset.qty)
         let add_btn = this_input.parent().parent().find('button[class="initial_add"]')
+        let star = item_details.parent().find('.legend_star')
 
 
         let total_amount = price * input
@@ -173,6 +180,8 @@ const tableDependableEvents = () => {
             qty.text(stock)
 
             add_btn.attr('disabled', 'true')
+            star.removeClass('show_legend')
+
             return
         }
 
@@ -186,6 +195,9 @@ const tableDependableEvents = () => {
             qty.text(total_qty)
 
             add_btn.removeAttr('disabled')
+
+            star.addClass('show_legend')
+
         }
         else {
             this_input.addClass('invalid_input')
@@ -194,11 +206,13 @@ const tableDependableEvents = () => {
             qty.text(stock)
 
             add_btn.attr('disabled','true')
+            star.removeClass('show_legend')
 
             sweetAlert({
                 icon: 'warning',
                 title: 'Insuficient stock please check your input.'
             })
+
 
         }
 
@@ -209,17 +223,55 @@ const tableDependableEvents = () => {
     $('.initial_add').unbind().click(e => {
         let item_details = $(e.target).parent().parent().parent().parent().parent()
 
-        let details = {
+        let d = {
             stock : item_details.find('.item_qty span').attr('data-qty'),
             price : item_details.find('.item_price span').text(),
             desc : item_details.find('.item_desc').text(),
             img : item_details.find('.add_to_cart').attr('data-img'),
-            input : item_details.find('.initial_qty').val()
+            input: item_details.find('.initial_qty').val(),
+            id: item_details.find('.add_to_cart').attr('data-id')
         }
 
+        const element = `
+                        <div class="order_con" data-id="${d.id}">
+                            <div class="details_con">
+                                <div class="img_con">
+                                    <img src="/Images/${d.img}"/>
+                                </div>
+                                <div class="ordered_item_details">
+                                    <div class="desc">Desc: <span>${d.desc}</span></div>
+                                    <div class="stock">Stock: <span data-stock="${d.stock}">${d.stock-d.input}</span> Qty</div>
+                                    <div class="price">Price: P<span>${d.price}</span></div>
+                                </div>
+                            </div>
 
-        console.log(details)
-        
+                            <div class="final_ordered_con">
+                                <div class="total_amount">
+                                    P <span>${d.input*d.price}</span>
+                                </div>
+                                <div class="ordered_qty">
+                                    <button ><i class="fa fa-minus"></i></button>
+                                    <input type="text" class="final_qty" value="${d.input}" />
+                                    <button ><i class="fa fa-plus"></i></button>
+                                </div>
+
+                            </div>
+
+                             <div class="remove_item_btn">
+                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
+                            </div>
+
+                        </div>
+        `
+
+        if ($(`.cart_modal .order_con[data-id="${d.id}"]`).length > 0)
+            $(`.cart_modal .order_con[data-id="${d.id}"]`).remove()
+
+        $('.cart_modal .modal_body').append(element)
+
+        addToCartEvents();
+
+        $(e.target).closest('.add_to_cart_initial_inputs').removeClass('add_to_cart_initial_inputs_show')
 
     })
 
@@ -361,6 +413,9 @@ const populateTable = () => {
                                     <div class="item_desc top">${item.ItemDesc}</div>
                                     <div class="item_price bottom"> P <span>${item.Price}</span> </div>
                                     <div class="item_qty bottom"> <span data-qty="${item.Qty}">${item.Qty}</span> Qty </div>
+                                </div>
+                                <div class="legend_star">
+                                    <i class="fa fa-star"></i>
                                 </div>
                             </td>
                         </tr>                        

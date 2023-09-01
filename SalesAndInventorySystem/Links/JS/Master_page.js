@@ -177,7 +177,16 @@ $(() => {
 
     $('.cart_modal').mousedown(e => e.stopPropagation())
 
-    $('.cart_modal .ordered_qty button').click(e => e.preventDefault())
+
+
+    addToCartEvents()
+})
+
+const addToCartEvents = () => {
+    $('.cart_modal .ordered_qty button').click(e => {
+        e.preventDefault()
+        e.stopPropagation()
+    })
 
     $('.cart_modal .final_qty').keyup(e => {
         let status = onlyNumber(e)
@@ -190,14 +199,55 @@ $(() => {
             return
         }
     })
-    $('.cart_modal .fa-minus').click(e => {
+
+    $('.cart_modal button:has(.fa-minus)').click(e => {
+        let order_con = $(e.target).closest('.order_con')
+        total_amount = order_con.find('.total_amount span'),
+            stock = order_con.find('.stock span[data-stock]'),
+            price = order_con.find('.price span').text(),
+            input = order_con.find('.final_qty'),
+            new_val = input.val() - 1
+
+        order_con.find('.ordered_qty button:has(.fa-plus)').removeAttr('disabled')
+
+
+        if (new_val <= 0)
+            order_con.find('button:has(.fa-minus)').attr('disabled', 'true')
+
+        input.val(new_val)
+        total_amount.text(new_val * price)
+        stock.text(stock.attr('data-stock') - new_val)
+
 
     })
-    $('.cart_modal .fa-plus').click(e => {
+
+    $('.cart_modal button:has(.fa-plus)').click(e => {
+        let order_con = $(e.target).closest('.order_con')
+        total_amount = order_con.find('.total_amount span'),
+            stock = order_con.find('.stock span[data-stock]'),
+            price = order_con.find('.price span').text(),
+            input = order_con.find('.final_qty'),
+            new_val = parseInt(input.val()) + 1
+
+        order_con.find('.ordered_qty button:has(.fa-minus)').removeAttr('disabled')
+
+        if (new_val >= stock.attr('data-stock') - 1)
+            order_con.find('button:has(.fa-plus)').attr('disabled', 'true')
+
+        input.val(new_val)
+        total_amount.text(new_val * price)
+        stock.text(stock.attr('data-stock') - new_val)
+
 
     })
 
-})
+    $('div.remove_item_btn').click(e => {
+        let div = $(e.target).parent().parent()
+
+        div.remove()
+    })
+
+}
 
 const activeSession = () => {
     $('.name_con').text(FIRSTNAME)
